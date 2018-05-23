@@ -19,7 +19,7 @@ public class SuperParent {
 	private static final String FIREFOX_DRIVER_LOCATION = GENERIC_DRIVER_LOCATION + "geckodriver.exe";
 	protected static WebDriver driver = null;
 	
-	private boolean OpenUrl (String url) {
+	private boolean openUrl (String url) {
 		if (driver != null) {
 			driver.manage().timeouts().implicitlyWait(30,  TimeUnit.SECONDS);
 			
@@ -36,7 +36,7 @@ public class SuperParent {
 		}
 	}
 	
-	private void SetupDriver (String browser) {		
+	private void setupDriver (String browser) {		
 		switch (browser){
 			case "Chrome":
 				ChromeOptions ops = new ChromeOptions();
@@ -55,23 +55,23 @@ public class SuperParent {
 		}
 	}
 	
-	protected void StartBrowser (String browser, String url) {
+	protected void startBrowser (String browser, String url) {
 		
 		try {
-			SetupDriver(browser);
-			OpenUrl(url);			
+			setupDriver(browser);
+			openUrl(url);			
 		}catch (Exception e){
 			System.out.println("An error happened trying to open the url");
 		}
 	}
 	
 	@After
-	public void Babye() {		
+	public void baBye() {		
 		driver.quit();
 		//System.exit(-1);
 	}
 	
-	public WebElement GetCorrectElement (By by, String textToFind) {
+	public WebElement getCorrectElement (By by, String textToFind) {
 		List<WebElement> elements = driver.findElements(by);
 		for (WebElement element : elements) {
 			if (element.getText().contains(textToFind))
@@ -80,7 +80,7 @@ public class SuperParent {
 		return null;		
 	}
 	
-	public WebElement GetCorrectElement (By by, String textToFind, String textToFind2) {
+	public WebElement getCorrectElement (By by, String textToFind, String textToFind2) {
 		List<WebElement> elements = driver.findElements(by);
 		for (WebElement element : elements) {
 			if (element.getText().contains(textToFind) && element.getText().contains(textToFind2))

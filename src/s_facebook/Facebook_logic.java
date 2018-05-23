@@ -13,11 +13,11 @@ public class Facebook_logic extends Facebook_Methods {
 	@Test
 	@FileParameters ("./data/sfacebook_params.csv")
 	public void testFacebookAddFriend(String browser, String fUser, String fPass, String friend_Name, String friend_Details) {
-		StartBrowser(browser, URL);
+		startBrowser(browser, URL);
 		
-		if (LoginSucceeds(fUser, fPass)) {
+		if (loginSucceeds(fUser, fPass)) {
 			System.out.println("We're in!");
-			AddFriend(friend_Name, friend_Details);
+			addFriend(friend_Name, friend_Details);
 		}else {
 			System.out.println("Login didn't work.");
 			//Babye();

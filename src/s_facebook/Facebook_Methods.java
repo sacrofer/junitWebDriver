@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import s_generics.SuperParent;
 
 public class Facebook_Methods extends SuperParent {
-	public boolean LoginSucceeds(String usr, String pwd) {		
+	public boolean loginSucceeds(String usr, String pwd) {		
 		WebElement campoUsuario = driver.findElement(By.id("email"));
 		WebElement campoPassword = driver.findElement(By.id("pass"));
 		WebElement botonLogin = driver.findElement(By.xpath("//input[@data-testid='royal_login_button']"));
@@ -34,7 +34,7 @@ public class Facebook_Methods extends SuperParent {
 			return false;
 	}
 	
-	public boolean NameExists(String name) {
+	public boolean nameExists(String name) {
 		WebElement search = driver.findElement(By.name("q"));
 		search.clear();
 		search.sendKeys(name);
@@ -51,11 +51,11 @@ public class Facebook_Methods extends SuperParent {
 		return (driver.findElement(By.partialLinkText(name)).isDisplayed()) ? true : false;
 	}
 	
-	public void AddFriend(String name, String details) {
-		if (NameExists(name)) {
+	public void addFriend(String name, String details) {
+		if (nameExists(name)) {
 			System.out.println("Name found");
 			String xPath = "//div[contains(@class, '_2yer')]";
-			WebElement myFriend = GetCorrectElement(By.xpath(xPath), details);			
+			WebElement myFriend = getCorrectElement(By.xpath(xPath), details);			
 			
 			if (myFriend != null) {
 				xPath = "//button[contains(@class, 'FriendRequestAdd')]";

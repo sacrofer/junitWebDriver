@@ -3,10 +3,16 @@ package facebook;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
+import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import junitparams.FileParameters;
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
 public class FacebookBaseTest {
 	
 	protected WebDriver driver;
@@ -14,8 +20,9 @@ public class FacebookBaseTest {
 	private static final String GENERIC_DRIVER_LOCATION = "C:\\testautomation\\libs\\drivers\\";
 	private static final String CHROME_DRIVER_LOCATION = GENERIC_DRIVER_LOCATION + "chromedriver.exe";
 
-	
-	protected void setUp(String browser, String url) {
+	//@Before
+	//@FileParameters("./data/facebooksetup.csv")
+	public void setUp(String browser, String url) {
 		ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--disable-notifications");
 		System.setProperty(CHROME_DRIVER_NAME, CHROME_DRIVER_LOCATION);
