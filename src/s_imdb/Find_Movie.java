@@ -12,7 +12,7 @@ public class Find_Movie extends Imdb_Methods {
 	
 	@Test
 	@FileParameters("./data/simdb_find_movie_params.csv")
-	public void findMovie(String browser, String movieName, String movieYear, String movieDirector) {
+	public void findMovie(String browser, String movieName, String movieYear, String movieDirector) throws MovieNotFound {
 		startBrowser(browser, URL);
 		searchMovie(movieName, movieYear);
 		verifyMovie (movieName, movieYear, movieDirector);

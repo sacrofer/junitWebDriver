@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import s_generics.SuperParent;
 
 public class Imdb_Methods extends SuperParent {
-	protected void searchMovie(String movie, String year) {
+	protected void searchMovie(String movie, String year) throws MovieNotFound {
 		WebElement searchBox = driver.findElement(By.name("q"));
 		searchBox.clear();
 		searchBox.sendKeys(movie);
@@ -17,7 +17,7 @@ public class Imdb_Methods extends SuperParent {
 		locateCorrectMovie(movie, year);
 	}
 	
-	protected void locateCorrectMovie(String movie, String year) {
+	protected void locateCorrectMovie(String movie, String year) throws MovieNotFound {
 		By by = By.className("result_text");
 		WebElement correctElement = getCorrectElement(by, movie, year);
 		
@@ -26,7 +26,10 @@ public class Imdb_Methods extends SuperParent {
 			System.out.println(movie + " from " + year + " found");
 		}else{
 			System.out.println("Test FAILED - " + movie + " from " + year + " NOT found");
+			throw new MovieNotFound("Test FAILED - " + movie + " from " + year + " NOT found");
 			////Babye();
+			//how to fail the case. It's currently passing if we reach this else
+				//Throw an exception
 		}
 	}
 	
@@ -35,7 +38,7 @@ public class Imdb_Methods extends SuperParent {
 			verifyDirector(director);
 		}else {
 			System.out.println("Looking for movie by name and year failed");
-			//Babye();
+			//Babye();			
 		}
 	}
 	
